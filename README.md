@@ -51,4 +51,4 @@ A simple TCP-based chat room application that allows multiple clients to connect
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
-For any questions or suggestions, please contact [yourname](mailto:yourname@example.com).
+For any questions or suggestions, please contact [CODE-Z](mailto:yourname@example.com).
