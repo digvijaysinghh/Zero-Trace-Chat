@@ -1,61 +1,54 @@
-# Project Title
+# tcp-chat-room
 
-A brief description of what this project does and who it's for.
+## Description
+A simple TCP-based chat room application that allows multiple clients to connect and communicate with each other in real-time.
 
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+## Features
+- Multiple clients can join the chat room.
+- Real-time messaging.
+- Simple and intuitive command-line interface.
 
 ## Installation
-
-1. Clone the repo:
+1. Clone the repository:
     ```sh
-    git clone https://github.com/your_username/repo_name.git
+    git clone https://github.com/yourusername/tcp-chat-room.git
     ```
 2. Navigate to the project directory:
     ```sh
-    cd repo_name
+    cd tcp-chat-room
     ```
-3. Install dependencies:
+3. Install the required dependencies:
     ```sh
-    npm install
+    pip install -r requirements.txt
     ```
 
 ## Usage
-
-1. Start the application:
+1. Start the server:
     ```sh
-    npm start
+    python server.py
     ```
-2. Open your browser and navigate to `http://localhost:3000`.
+2. Start a client:
+    ```sh
+    python client.py
+    ```
+3. Follow the on-screen instructions to join the chat room and start chatting.
 
-## Features
-
-- Feature 1: Description of feature 1.
-- Feature 2: Description of feature 2.
-- Feature 3: Description of feature 3.
+## Configuration
+- The server and client configurations can be adjusted in the `config.py` file.
+- Default settings include:
+    - Server host: `localhost`
+    - Server port: `12345`
 
 ## Contributing
-
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Open a pull request.
 
 ## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+For any questions or suggestions, please contact [CODE-Z](mailto:yourname@example.com).
