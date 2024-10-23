@@ -31,8 +31,8 @@ A simple TCP-based chat room application that allows multiple clients to connect
 
 ## Configuration
 - Default settings include:
-    - Server host: `127.0.0.1`
-    - Server port: `5556`
+    - Server host: `0.0.0.0`
+    - Server port: `55545`
 
 ## Contributing
 1. Fork the repository.
