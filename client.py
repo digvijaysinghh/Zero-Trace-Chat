@@ -1,15 +1,37 @@
 import socket
 import ssl
 import threading
+import base64
+import os
+from dotenv import load_dotenv
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives import serialization, hashes
 
-host = '(server_IP)'
-port = 55556
+# Load environment variables from .env file
+load_dotenv()
 
+# Get paths from env
+public_key_path = os.getenv('PUBLIC_KEY_PATH')
+cert_path = os.getenv('CERT_PATH')
+
+with open(public_key_path, "rb") as key_file:
+    server_public_key = serialization.load_pem_public_key(key_file.read())
+
+host = input("Enter the server IP address: ")
+port = 55545
+
+# Created an SSL context
+context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+context.check_hostname = False
+context.verify_mode = ssl.CERT_NONE
+
+# Wrapped the socket with SSL
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ssl_client = context.wrap_socket(client, server_hostname=host)
 ssl_client.connect((host, port))
 
-nickname = input("Choose your nickname: ")
+nickname = input("\n\tChoose your nickname: ")
+print("\n")
 
 def receive():
     while True:
