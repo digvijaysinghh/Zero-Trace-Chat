@@ -7,10 +7,8 @@ from dotenv import load_dotenv
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import serialization, hashes
 
-# Load environment variables from .env file
 load_dotenv()
 
-# Get paths from env
 public_key_path = os.getenv('PUBLIC_KEY_PATH')
 cert_path = os.getenv('CERT_PATH')
 
