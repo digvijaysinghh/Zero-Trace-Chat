@@ -61,7 +61,7 @@ def receive():
         ssl_client = context.wrap_socket(client, server_side=True)
         print(f"Connected with {str(address)}")
 
-        ssl_client.send('NICK'.encode('ascii'))
+        ssl_client.send('username'.encode('ascii'))
         nickname = ssl_client.recv(1024).decode('ascii')
         nicknames.append(nickname)
         clients.append(ssl_client)

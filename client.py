@@ -35,7 +35,7 @@ def receive():
     while True:
         try:
             message = ssl_client.recv(1024).decode('ascii')
-            if message == 'NICK':
+            if message == 'username':
                 ssl_client.send(nickname.encode('ascii'))
             else:
                 print(message)
