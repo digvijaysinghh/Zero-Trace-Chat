@@ -6,6 +6,10 @@ import os
 from dotenv import load_dotenv
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import serialization, hashes
+from colorama import Fore, Style, init
+
+# Initialize colorama
+init()
 
 # Load environment variables from .env file
 load_dotenv()
@@ -20,7 +24,7 @@ with open(private_key_path, "rb") as key_file:
 host = '0.0.0.0'
 port = 55545
 
-#Created an SSL context
+# Created an SSL context
 context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 context.load_cert_chain(certfile=cert_path, keyfile=private_key_path)
 
@@ -53,14 +57,16 @@ def handle(client):
             clients.remove(client)
             client.close()
             nickname = nicknames[index]
-            broadcast(f'{nickname} left the chat!'.encode('ascii'))
+            broadcast(f'{Fore.BLUE}{nickname}{Style.RESET_ALL} left the chat!'.encode('ascii'))
             nicknames.remove(nickname)
             break
+
 
 def receive():
     while True:
         client, address = server.accept()
         ssl_client = context.wrap_socket(client, server_side=True)
+        print("-" * 50)
         print(f"Connected with {str(address)}")
 
         ssl_client.send('NICK'.encode('ascii'))
@@ -68,12 +74,15 @@ def receive():
         nicknames.append(nickname)
         clients.append(ssl_client)
 
-        print(f"Nickname of the client is {nickname}")
-        broadcast(f"{nickname} joined the chat!".encode('ascii'))
-        ssl_client.send('Connected to the server!'.encode('ascii'))
+        print(f"Nickname of the client is {Fore.BLUE}{nickname}{Style.RESET_ALL}")
+        broadcast(f"{Fore.GREEN}{nickname}{Style.RESET_ALL} joined the chat :)".encode('ascii'))
+        ssl_client.send(f'Connected to the server! \n'.encode('ascii'))
+        print("-" * 50 + "\n")
 
         thread = threading.Thread(target=handle, args=(ssl_client,))
         thread.start()
 
-print("Server is listening...")
+print(Fore.BLUE + "\n" + " " *5 +"Server is listening..." + "\n" + Style.RESET_ALL, end="")
+print(Fore.GREEN + "\n"+"Users in the Chat Room" + "\n" + Style.RESET_ALL)
+
 receive()
