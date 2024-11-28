@@ -49,7 +49,12 @@ def receive():
             if message == 'NICK':
                 ssl_client.send(nickname.encode('ascii'))
             else:
-                print(" " * 3 + message)
+                print(" " * 3 + message )
+                if "Connected to the server!" in message:
+                    print( " " * 5  + "-" * 39)
+                    print(" " * 5 + "You are now connected to the chat room!")
+                    print(" " * 5 + "You can start chatting now!")
+                    print(" " * 5 + "-" * 27)
         except:
             print("An error occurred!")
             ssl_client.close()
@@ -57,7 +62,7 @@ def receive():
 
 def write():
     while True:
-        message = f'{Fore.BLUE}{nickname}{Style.RESET_ALL}:- {input("")}'
+        message = f'\n->> {Fore.BLUE}{nickname}{Style.RESET_ALL}:- {input("")}\n'
         encrypted_message = server_public_key.encrypt(
             message.encode('ascii'),
             padding.OAEP(
@@ -67,7 +72,6 @@ def write():
             )
         )
         ssl_client.send(base64.b64encode(encrypted_message))
-
 
 receive_thread = threading.Thread(target=receive)
 receive_thread.start()
