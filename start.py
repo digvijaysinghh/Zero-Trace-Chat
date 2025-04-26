@@ -67,10 +67,9 @@ class ChatClient:
         # Bottom feature button panel (horizontal row at bottom)
         btn_frame = tk.Frame(self.window)
         btn_frame.grid(row=5, column=0, padx=10, pady=5, sticky='ew')
-        btn_frame.columnconfigure(tuple(range(5)), weight=1)
+        btn_frame.columnconfigure(tuple(range(4)), weight=1)
 
         features = [
-            ("Files", self.open_download_folder),
             ("Export Logs", self.export_logs),
             ("Invisible Input", self.toggle_invisible),
             ("Self Destruct", self.set_self_destruct),
