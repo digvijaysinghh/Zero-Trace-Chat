@@ -60,7 +60,18 @@
   - Server maintains **zero logs**
   - Clients may export their **own logs** locally if they choose
   - No message is retained on disk — **only encrypted memory exchange**
+ 
+---
+## 🔐 Wireshark Validation (Proof of Encryption)
 
+Below is a screenshot of Zer0Trace traffic captured using Wireshark.  
+It confirms that all communication is securely encrypted over **TLSv1.2**,  
+with **no human-readable data** visible even when inspected directly:
+
+![Wireshark Screenshot](Screenshot/wireshark.png)
+
+> Packets captured on TCP port `55545` show encrypted application data,
+> validating that **end-to-end security is enforced** during transmission.
 ---
 ## ⚙️ Requirements
 
